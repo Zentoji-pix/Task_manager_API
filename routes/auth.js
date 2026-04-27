@@ -27,7 +27,7 @@ router.post('/login', async(req, res, next) => {
             error.statusCode = 404
             return next(error)
         }
-        const verify = bcrypt.compare(password, userData.password)
+        const verify = await bcrypt.compare(password, userData.password)
         if(verify !== true){
             const error = new Error('Incorrect password')
             error.statusCode = 401
